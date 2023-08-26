@@ -1,0 +1,56 @@
+Done:
+nginx
+html
+    web page administrator
+
+Next:
+php
+    configure nginx per https://wiki.archlinux.org/title/Nginx#PHP_implementation
+    endpoint for add event client
+sql
+    make access, user tables
+endpoint for administrator search
+    probably format sql stuff as json
+
+Later:
+administrator web page can search
+administrator app can do users etc.
+sql job to delete old records
+authentication someh
+separate login page
+
+Mabye:
+local client for the card swipe thingy
+systemd timer to delete old records
+
+functional requirements:
+    records older than 5 years must be deleted in a timely manner (probably once per day)
+    searchable history of sunlab access.
+        search by date, student id, and time range.
+        must have GUI.
+    must support multiple types of users.
+    admin type users must be able to activate, suspend, and reactivate accounts by ID
+
+non-functional requirements:
+    use php, mysql/mariadb on centos on digital ocean for backend
+    host on local network to begin with
+    host on mpeschel10.com for final demo
+    
+    two tables: access and users
+    access has attributes ID, in/out, timestamp
+    users has attributes ID, name, user_type, is_active
+    
+    one of those SQL functions to delete all records older than 5 years
+    script on systemd timer that deletes records older than 5 years
+    
+    test script to insert a bunch of junk historical records
+
+
+    html/css/js page for administrator front-end. No framework for now.
+    probably python on systemd timer for card reader front-end? Not necessary until 
+
+Assumptions:
+    two separate clients:
+        one to read from card swipe and send data to https endpoint
+        one to read and display history of thing from web server
+
