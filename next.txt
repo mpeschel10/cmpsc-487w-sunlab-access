@@ -5,12 +5,19 @@ html
 
 Next:
 php
-    configure nginx per https://wiki.archlinux.org/title/Nginx#PHP_implementation
     endpoint for add event client
+        I guess make a file when we receive a put request somehow? PHP can do  that, I hope.
+generic request web page that can do get and put requests on demand, for test purposes.
 sql
     make access, user tables
-endpoint for administrator search
+        script for cleaning what we've done (deleting tables mostly)
+        script for creating the tables
+        script for creating a few test records
+hook php "event happened" endpoint up to sql
+    add php params/whatever for user ID and local timestamp
+php endpoint for administrator search
     probably format sql stuff as json
+php endpoint for administrator updates
 
 Later:
 administrator web page can search
@@ -19,9 +26,20 @@ sql job to delete old records
 authentication someh
 separate login page
 
-Mabye:
+Maybe:
 local client for the card swipe thingy
 systemd timer to delete old records
+sanity checking for "local time" of swipe records if reported time is like, actually close to server time or if we're getting 3-month old spoofed records or what
+
+Server notes:
+pacman -S nginx
+systemctl start nginx
+# Edit /etc/nginx.conf location block to point to this dir/the other thing
+nginx -t
+nginx -s
+pacman -S php-fpm
+systemctl start php-fpm.service
+# Edit /etc/nginx.conf location block to fastcgi_pass unix:/run/php-fpm/php-fpm.sock;
 
 functional requirements:
     records older than 5 years must be deleted in a timely manner (probably once per day)
