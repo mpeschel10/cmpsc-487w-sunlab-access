@@ -4,10 +4,8 @@ html
     web page administrator
 
 Next:
-php
-    endpoint for add event client
-        I guess make a file when we receive a put request somehow? PHP can do  that, I hope.
 generic request web page that can do get and put requests on demand, for test purposes.
+    parameter for name of file
 sql
     make access, user tables
         script for cleaning what we've done (deleting tables mostly)
@@ -15,6 +13,7 @@ sql
         script for creating a few test records
 hook php "event happened" endpoint up to sql
     add php params/whatever for user ID and local timestamp
+    remove 222 access to this directory
 php endpoint for administrator search
     probably format sql stuff as json
 php endpoint for administrator updates
