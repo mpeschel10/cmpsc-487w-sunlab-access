@@ -2,10 +2,10 @@ Done:
 nginx
 html
     web page administrator
-
-Next:
 generic request web page that can do get and put requests on demand, for test purposes.
     parameter for name of file
+
+Next:
 sql
     make access, user tables
         script for cleaning what we've done (deleting tables mostly)

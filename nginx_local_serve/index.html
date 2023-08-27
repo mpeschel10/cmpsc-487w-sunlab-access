@@ -4,10 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Management</title>
+    <script src="/index.js"></script>
 </head>
 <body>
     <p>Welcome, administrator.</p>
     <p>Welcome to the Sun lab user management interface.</p>
     <p>Today is a good day.</p>
+    <form>
+        <label for="input_param">Create file named:</label>
+        <input type="text" placeholder="file_name" id="input_param" value="test_file.txt">
+        <input type="button" value="Create" onclick="say_hi();">
+    </form>
 </body>
 </html>
