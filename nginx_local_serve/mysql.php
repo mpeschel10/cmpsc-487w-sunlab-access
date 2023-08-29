@@ -5,7 +5,7 @@
     <title>SQL test page</title>
 </head>
 <body>
-</body>
+<!-- Transcribed from https://www.w3schools.com/php/php_mysql_select.asp -->
 <?php
     ini_set('display_errors', 1);
     if ($_SERVER['REQUEST_METHOD'] === 'GET')
@@ -35,4 +35,5 @@
         http_response_code(405);
     }
 ?>
+</body>
 </html>
