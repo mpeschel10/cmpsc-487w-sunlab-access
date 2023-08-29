@@ -7,16 +7,22 @@ generic request web page that can do get and put requests on demand, for test pu
 
 Next:
 sql
-    make access, user tables
-        script for cleaning what we've done (deleting tables mostly)
-        script for creating the tables
-        script for creating a few test records
+    hook php up to sql
+    select something from table
+        make web client add record to table
+make access table
 hook php "event happened" endpoint up to sql
     add php params/whatever for user ID and local timestamp
     remove 222 access to this directory
+make user tables
+    name
 php endpoint for administrator search
     probably format sql stuff as json
 php endpoint for administrator updates
+sql
+    script for cleaning what we've done (deleting tables mostly)
+    script for creating the tables
+    script for creating a few test records
 
 Later:
 administrator web page can search
@@ -39,6 +45,23 @@ nginx -s
 pacman -S php-fpm
 systemctl start php-fpm.service
 # Edit /etc/nginx.conf location block to fastcgi_pass unix:/run/php-fpm/php-fpm.sock;
+pacman -S mariadb
+# Security recommends on https://wiki.archlinux.org/title/MariaDB
+mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+systemctl start mariadb
+mariadb
+CREATE DATABASE sweng;
+USE sweng;
+SHOW DATABASES;
+system pwd;
+source database.sql;
+\. database.sql;
+CREATE USER AzureDiamond@localhost IDENTIFIED BY hunter2;
+SELECT user FROM mysql.user;
+GRANT ALL PRIVILEGES ON sweng.* TO AzureDiamond@localhost;
+FLUSH PRIVILEGES;
+SHOW GRANTS FOR AzureDiamond@localhost;
+
 
 functional requirements:
     records older than 5 years must be deleted in a timely manner (probably once per day)
