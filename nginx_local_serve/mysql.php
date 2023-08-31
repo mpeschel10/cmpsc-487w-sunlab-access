@@ -10,11 +10,14 @@
     ini_set('display_errors', 1);
     if ($_SERVER['REQUEST_METHOD'] === 'GET')
     {
-        echo 'Your name is ', $_GET['name'];
-        ?><br><?php
+        if (!array_key_exists('username', $_GET) || !array_key_exists('password', $_GET) || !array_key_exists('apple', $_GET))
+        {
+            die('You must provide query parameters for username, password, apple.');
+        }
+        echo 'Your name is ' . $_GET['username'] . '<br>';
         $servername = 'localhost';
-        $username = 'AzureDiamond';
-        $password = 'hunter2';
+        $username = $_GET['username'];
+        $password = $_GET['password'];
         $dbname = 'sweng';
 
         $conn = new mysqli($servername, $username, $password, $dbname);
@@ -22,7 +25,7 @@
             die('Connection failed: ' . $conn->connect_error);
         }
 
-        $sql = "SELECT * FROM apples";
+        $sql = "INSERT INTO apples VALUES ('" . $_GET['apple'] . "')";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
@@ -32,6 +35,7 @@
         }
         http_response_code(200);
     } else {
+        echo '405 Wrong Access Method';
         http_response_code(405);
     }
 ?>
