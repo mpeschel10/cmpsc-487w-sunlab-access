@@ -1,10 +1,6 @@
 Done:
 
 Next:
-figure out http authentication
-    make page that returns hello only if you have a password and username
-        javascript authentication
-move nginx config to this repo so I can document it
 make access table
 hook php "event happened" endpoint up to sql
     add php params/whatever for user ID and local timestamp
@@ -31,6 +27,8 @@ what other kinds of auth are there? digest? token? implement something nicer
 what kinds of password hashing do php and nginx support?
     good procedure? what is state of art
         how does twitter google facebook do it?
+move to public server on digitalocean
+https
 
 Maybe:
 systemd timer to delete old records
