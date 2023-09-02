@@ -1,15 +1,10 @@
 Done:
-nginx
-html
-    web page administrator
-generic request web page that can do get and put requests on demand, for test purposes.
-    parameter for name of file
 
 Next:
-sql
-    hook php up to sql
-    select something from table
-        make web client add record to table
+figure out http authentication
+    make page that returns hello only if you have a password and username
+        javascript authentication
+move nginx config to this repo so I can document it
 make access table
 hook php "event happened" endpoint up to sql
     add php params/whatever for user ID and local timestamp
@@ -30,37 +25,52 @@ administrator app can do users etc.
 sql job to delete old records
 authentication someh
 separate login page
+local client for the card swipe thingy
+php support for basic auth instead of nginx
+what other kinds of auth are there? digest? token? implement something nicer
+what kinds of password hashing do php and nginx support?
+    good procedure? what is state of art
+        how does twitter google facebook do it?
 
 Maybe:
-local client for the card swipe thingy
 systemd timer to delete old records
 sanity checking for "local time" of swipe records if reported time is like, actually close to server time or if we're getting 3-month old spoofed records or what
 
 Server notes:
-pacman -S nginx
-systemctl start nginx
+* pacman -S nginx
+* systemctl start nginx
 # Edit /etc/nginx.conf location block to point to this dir/the other thing
 nginx -t
-nginx -s
-pacman -S php-fpm
-systemctl start php-fpm.service
+nginx -s reload
+* pacman -S php-fpm
+* systemctl start php-fpm.service
 # Edit /etc/nginx.conf location block to fastcgi_pass unix:/run/php-fpm/php-fpm.sock;
-pacman -S mariadb
+* pacman -S mariadb
 # Security recommends on https://wiki.archlinux.org/title/MariaDB
-mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-systemctl start mariadb
-mariadb
-CREATE DATABASE sweng;
-USE sweng;
-SHOW DATABASES;
-system pwd;
-source database.sql;
-\. database.sql;
-CREATE USER AzureDiamond@localhost IDENTIFIED BY hunter2;
-SELECT user FROM mysql.user;
-GRANT ALL PRIVILEGES ON sweng.* TO AzureDiamond@localhost;
-FLUSH PRIVILEGES;
-SHOW GRANTS FOR AzureDiamond@localhost;
+* mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+* systemctl start mariadb
+* mariadb
+* CREATE DATABASE sweng;
+* USE sweng;
+* SHOW DATABASES;
+* system pwd;
+* source database.sql;
+* \. database.sql;
+* CREATE USER AzureDiamond@localhost IDENTIFIED BY hunter2;
+* SELECT user FROM mysql.user;
+* GRANT ALL PRIVILEGES ON sweng.* TO AzureDiamond@localhost;
+* FLUSH PRIVILEGES;
+* SHOW GRANTS FOR AzureDiamond@localhost;
+
+# HTTP basic auth
+location = /status.txt {
+    auth_basic "learning";
+    auth_basic_user_file /etc/nginx/.htpasswd;
+}
+# auth_basic's argument is the "Realm" which is a tag for the set of resources that all use the same keys
+sudo htpasswd -c /etc/nginx/.htpasswd AzureDiamond
+# type hunter2
+sudo htpasswd /etc/nginx/.htpasswd NextUser
 
 
 functional requirements:
