@@ -1,7 +1,6 @@
 Done:
 
 Next:
-make access table
 hook php "event happened" endpoint up to sql
     add php params/whatever for user ID and local timestamp
     remove 222 access to this directory
@@ -48,17 +47,17 @@ nginx -s reload
 * mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 * systemctl start mariadb
 * mariadb
-* CREATE DATABASE sweng;
-* USE sweng;
-* SHOW DATABASES;
-* system pwd;
-* source database.sql;
-* \. database.sql;
-* CREATE USER AzureDiamond@localhost IDENTIFIED BY hunter2;
-* SELECT user FROM mysql.user;
-* GRANT ALL PRIVILEGES ON sweng.* TO AzureDiamond@localhost;
-* FLUSH PRIVILEGES;
-* SHOW GRANTS FOR AzureDiamond@localhost;
+CREATE DATABASE sweng;
+USE sweng;
+SHOW DATABASES;
+system pwd;
+source database.sql;
+\. database.sql;
+CREATE USER AzureDiamond@localhost IDENTIFIED BY "hunter2";
+SELECT user FROM mysql.user;
+GRANT ALL PRIVILEGES ON sweng.* TO AzureDiamond@localhost;
+FLUSH PRIVILEGES;
+SHOW GRANTS FOR AzureDiamond@localhost;
 
 # HTTP basic auth
 location = /status.txt {
