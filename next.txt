@@ -3,9 +3,8 @@ Done:
 Next:
 hook php "event happened" endpoint up to sql
     add php params/whatever for user ID and local timestamp
-    remove 222 access to this directory
-make user tables
-    name
+    should return true or false based on whether 
+    basic auth
 php endpoint for administrator search
     probably format sql stuff as json
 php endpoint for administrator updates
@@ -30,6 +29,7 @@ move to public server on digitalocean
 https
 
 Maybe:
+make swipe.php named just swipe
 systemd timer to delete old records
 sanity checking for "local time" of swipe records if reported time is like, actually close to server time or if we're getting 3-month old spoofed records or what
 
