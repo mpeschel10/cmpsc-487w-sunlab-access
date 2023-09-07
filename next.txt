@@ -1,13 +1,20 @@
 Done:
 
 Next:
-php endpoint for administrator search
-    probably format sql stuff as json
 php endpoint for administrator updates
-sql
-    script for cleaning what we've done (deleting tables mostly)
-    script for creating the tables
-    script for creating a few test records
+    user.php PUT
+    user.php POST
+php search endpoint:
+    where timestamp > x and < y. Format as epochs, I guess? Idk
+    where allowed is true or allowed is false
+    where kind = 'ENTRY' or 'EGRESS'
+    where user_id = 'X'
+    where name = 'NAME' (do internal lookup to user id)
+
+    also, get list of students present in lounge at specific time
+    get list of events older than five years and delete them
+search endpoints should support limited number
+search endpoints should uspport pagination
 
 Later:
 administrator web page can search
@@ -30,6 +37,8 @@ Maybe:
 make swipe.php named just swipe
 systemd timer to delete old records
 sanity checking for "local time" of swipe records if reported time is like, actually close to server time or if we're getting 3-month old spoofed records or what
+remove passwords from php lol
+self-signed certificate nginx
 
 Server notes:
 * pacman -S nginx
