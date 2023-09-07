@@ -1,5 +1,7 @@
-drop table access;
-drop table user;
+USE sweng;
+
+DROP TABLE access;
+DROP TABLE user;
 
 
 CREATE TABLE user (
@@ -42,4 +44,4 @@ VALUES
 
 select * from user;
 select * from access;
-commit;
+COMMIT;
