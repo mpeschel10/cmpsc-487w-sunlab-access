@@ -1,10 +1,6 @@
 Done:
 
 Next:
-hook php "event happened" endpoint up to sql
-    add php params/whatever for user ID and local timestamp
-    should return true or false based on whether 
-    basic auth
 php endpoint for administrator search
     probably format sql stuff as json
 php endpoint for administrator updates
@@ -17,6 +13,7 @@ Later:
 administrator web page can search
 administrator app can do users etc.
 sql job to delete old records
+sql prepared statements
 authentication someh
 separate login page
 local client for the card swipe thingy
@@ -27,6 +24,7 @@ what kinds of password hashing do php and nginx support?
         how does twitter google facebook do it?
 move to public server on digitalocean
 https
+basic auth swipe.php
 
 Maybe:
 make swipe.php named just swipe

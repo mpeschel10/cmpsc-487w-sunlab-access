@@ -12,14 +12,14 @@ CREATE TABLE user (
 INSERT INTO user
     (     kind, allowed,        id)
 VALUES
-    ('STUDENT',       1, 'hsy5393'),
-    ('STUDENT',       1, 'msp3344'),
-    ('STUDENT',       0,     'bob'),
-    (  'ADMIN',       1,  'miccer')
+    ('STUDENT',       1,    'gabe'),
+    ('STUDENT',       1,    'mark'),
+    ('STUDENT',       0,   'tyler'),
+    (  'ADMIN',       1,   'admin')
 ;
 
 CREATE TABLE access (
-    id INT,
+    id INT AUTO_INCREMENT,
     user_id VARCHAR(256),
     kind SET('ENTRY', 'EGRESS'),
     timestamp DATETIME,
