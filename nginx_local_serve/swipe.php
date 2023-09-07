@@ -15,25 +15,25 @@ $check_access_query = "SELECT allowed FROM user WHERE id = \"$id\"";
 $result = $conn->query($check_access_query);
 if ($result->num_rows == 0)
 {
-    $response = array('result'=>false, 'reason'=>'unknown id');
+    $response = array('allowed'=>false, 'reason'=>'unknown id');
 }
 else
 {
     $row = $result->fetch_assoc();
     if ($row['allowed'] === '1')
     {
-        $response = array('result'=>true, 'reason'=>'authorized id');
+        $response = array('allowed'=>true, 'reason'=>'authorized id');
     }
     else
     {
-        $response = array('result'=>false, 'reason'=>'suspended id');
+        $response = array('allowed'=>false, 'reason'=>'suspended id');
     }
 }
 
 $user_id = $_GET['id'];
 $kind = 'ENTRY';
 $timestamp = date('Y-m-d H:i:s', $_GET['timestamp']);
-$allowed = $response['result'] ? '1' : '0';
+$allowed = $response['allowed'] ? '1' : '0';
 $log_query = "INSERT INTO access (user_id, kind, timestamp, allowed) VALUES ('$user_id', '$kind', '$timestamp', $allowed)";
 // echo "Query: $log_query" . '<br>';
 
