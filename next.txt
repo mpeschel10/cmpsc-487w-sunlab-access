@@ -2,7 +2,6 @@ Done:
 
 Next:
 admin page (user.html)
-    see user table
     delete user button
     add user form
     text fields to edit users within user table
@@ -30,6 +29,7 @@ what kinds of password hashing do php and nginx support?
 move to public server on digitalocean
 https
 basic auth swipe.php
+make user.html presentation pretty: Titlecase user.kind, boolean(user.allowed)
 
 Maybe:
 live updates (swipe on card-read.html, update gets sent to access.html etc)
