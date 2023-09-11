@@ -1,10 +1,13 @@
+import trimIdModule from "./trim-id.js";
+const {trimId} = trimIdModule;
+
 (() => {
     function onButtonId(event)
     {
         event.preventDefault();
         
         const inputId = document.getElementById("input-id");
-        const id = inputId.value.replace(/^%A/, "").split("=")[0];
+        const id = trimId(inputId.value);
         inputId.value = id;
 
         const inputTimestamp = document.getElementById("input-timestamp");
