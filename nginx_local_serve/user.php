@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET')
 
     $id = $_GET['id'] ?? null;
     $sql = $id === null ?
-        'SELECT * FROM user LIMIT 10' :
+        'SELECT * FROM user' :
         "SELECT * FROM user  WHERE id = \"$id\"";
     $result = $conn->query($sql);
     $conn->close();
@@ -20,9 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET')
         $response[] = $row;
     }
 
-    echo '<pre>';
     echo json_encode($response, JSON_PRETTY_PRINT);
-    echo '</pre>';
 
     http_response_code(200);
 

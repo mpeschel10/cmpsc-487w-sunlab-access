@@ -1,30 +1,24 @@
 Done:
 
 Next:
-swipe client
-admin page (index.html)
+admin page (user.html)
     see user table
-php search endpoint:
-    where timestamp > x and < y. Format as epochs, I guess? Idk
-    where allowed is true or allowed is false
-    where kind = 'ENTRY' or 'EGRESS'
-    where user_id = 'X'
-    where name = 'NAME' (do internal lookup to user id)
-
-    also, get list of students present in lounge at specific time
-    get list of events older than five years and delete them
-search endpoints should support limited number
-search endpoints should uspport pagination
+    delete user button
+    add user form
+    text fields to edit users within user table
+    button to post changes to user (exist_ok)
+    sort user table locally
+    fields for search by time range
+    fields for search by "present at instant"
+    search by user by id
+    search by user by name
 
 Later:
 tests
-administrator web page can search
-administrator app can do users etc.
 sql job to delete old records
 sql prepared statements
 authentication someh
 separate login page
-local client for the card swipe thingy
 php support for basic auth instead of nginx
 what other kinds of auth are there? digest? token? implement something nicer
 what kinds of password hashing do php and nginx support?
@@ -36,7 +30,8 @@ basic auth swipe.php
 
 Maybe:
 pagination
-make swipe.php named just swipe
+make access.php named just access
+    or access.json
 systemd timer to delete old records
 sanity checking for "local time" of swipe records if reported time is like, actually close to server time or if we're getting 3-month old spoofed records or what
 remove passwords from php lol
