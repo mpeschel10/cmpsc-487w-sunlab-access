@@ -6,18 +6,19 @@ DROP TABLE user;
 
 CREATE TABLE user (
     id VARCHAR(256),
+    name VARCHAR(256),
     kind SET('STUDENT', 'ADMIN'),
     allowed BOOLEAN,
     CONSTRAINT PK_user PRIMARY KEY (id)
 );
 
 INSERT INTO user
-    (     kind, allowed,        id)
+    (     kind, allowed,                      id,              name)
 VALUES
-    ('STUDENT',       1,    'gabe'),
-    ('STUDENT',       1,    'mark'),
-    ('STUDENT',       0,   'tyler'),
-    (  'ADMIN',       1,   'admin')
+    ('STUDENT',       1,                'edsger', 'Edsger Dijkstra'),
+    ('STUDENT',       1,             '972607187',    'Mark Peschel'),
+    ('STUDENT',       0, ';9308057671208700000?',     'Alan Turing'),
+    (  'ADMIN',       1,                 'admin',   'Adam Inchoate')
 ;
 
 CREATE TABLE access (

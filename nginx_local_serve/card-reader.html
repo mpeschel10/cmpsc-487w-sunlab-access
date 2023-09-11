@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Card reader</title>
+<script src="/card-reader.js"></script>
+</head>
+<body>
+<form action="post" id="form-card-reader">
+    <div>
+        <label for="input-id">User ID:</label>
+        <input type="text" name="id" id="input-id">
+        <input type="number" name="timestamp" id="input-timestamp" aria-hidden="true" style="display:none">
+        <button type="submit" id="button-id">Submit</button>
+    </div>
+    <fieldset>
+        <legend>Entering or leaving:</legend>
+        <div>
+            <label for="input-kind-entry"><input id="input-kind-entry" type="radio" name="kind" value="ENTRY" checked> Entering</label>
+            <label for="input-kind-egress"><input id="input-kind-egress" type="radio" name="kind" value="EGRESS"> Leaving</label>
+        </div>
+    </fieldset>
+</form>
+</body>
+</html>

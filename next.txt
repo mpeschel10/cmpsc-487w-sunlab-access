@@ -1,7 +1,9 @@
 Done:
 
 Next:
-
+swipe client
+admin page (index.html)
+    see user table
 php search endpoint:
     where timestamp > x and < y. Format as epochs, I guess? Idk
     where allowed is true or allowed is false
@@ -15,6 +17,7 @@ search endpoints should support limited number
 search endpoints should uspport pagination
 
 Later:
+tests
 administrator web page can search
 administrator app can do users etc.
 sql job to delete old records
@@ -32,6 +35,7 @@ https
 basic auth swipe.php
 
 Maybe:
+pagination
 make swipe.php named just swipe
 systemd timer to delete old records
 sanity checking for "local time" of swipe records if reported time is like, actually close to server time or if we're getting 3-month old spoofed records or what
