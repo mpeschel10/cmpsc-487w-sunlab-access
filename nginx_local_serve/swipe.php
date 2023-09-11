@@ -41,6 +41,8 @@ try {
     $result = $conn->query($log_query);
 } catch (mysqli_sql_exception $e) {
     // If logging isn't working, there's not much we can do about that.
+} finally {
+    $conn->close();
 }
 
 echo json_encode($response);

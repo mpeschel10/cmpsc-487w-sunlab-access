@@ -1,9 +1,7 @@
 Done:
 
 Next:
-php endpoint for administrator updates
-    user.php PUT
-    user.php POST
+
 php search endpoint:
     where timestamp > x and < y. Format as epochs, I guess? Idk
     where allowed is true or allowed is false

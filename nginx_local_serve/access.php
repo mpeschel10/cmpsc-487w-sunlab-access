@@ -11,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET')
     }
 
     $result = $conn->query('SELECT * FROM access');
+    $conn->close();
     
     $response = array();
     if ($result->num_rows > 0)

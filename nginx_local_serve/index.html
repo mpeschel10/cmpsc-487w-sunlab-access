@@ -10,6 +10,9 @@
     <p>Welcome, administrator.</p>
     <p>Welcome to the Sun lab user management interface.</p>
     <p>Today is a good day.</p>
+    <div>
+        <button id="button-reset">Reset entire database</button>
+    </div>
     <form>
         <div>
             <label for="input_param">Create file named:</label>
@@ -28,8 +31,28 @@
             <input type="button" id="button-login" onclick="setLogin()" value="Log in">
         </div>
     </form>
-    <p><span>Status: </span><span id="span-status"></span></p>
+    <p><span>Status: </span><pre><span id="span-status"></span></pre></p>
     <div><a href="http://AzureDiamond:hunter2@localhost/status.txt">LOG IN FOR BY URL NOW</a></div>
+    <div>
+        <form action="/user.php" method="POST" id="form-add-user">
+            <label for="input-user-id">User ID:</label>
+            <input type="text" name="id" id="input-user-id" value="dreadful bill">
+            <br>
+
+            <label for="select-user-kind">User kind:</label>
+            <select name="kind" id="select-user-kind">
+                <option value="ADMIN">Administrator</option>
+                <option selected value="STUDENT">Student</option>
+            </select>
+            <br>
+            
+            <label for="input-user-allowed">User allowed:</label>
+            <input type="checkbox" name="allowed" id="input-user-allowed" checked>
+            <br>
+            
+            <input type="submit" value="PUT" id="button-add-user">
+        </form>
+    </div>
     <p>
         <a href="https://www.svgrepo.com/svg/322363/flower-emblem">Favicon</a> by <a href="https://game-icons.net/?ref=svgrepo.com" target="_blank">Game Icons.net</a>
         in CC Attribution License via <a href="https://www.svgrepo.com/" target="_blank">SVG Repo</a>
