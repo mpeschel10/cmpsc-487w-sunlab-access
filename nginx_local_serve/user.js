@@ -9,13 +9,16 @@
         rowUser.querySelector(".data-name")   .innerText = user.name;
         rowUser.querySelector(".data-kind")   .innerText = user.kind;
         rowUser.querySelector(".data-allowed").innerText = user.allowed;
+        
+        const buttonDeleteUser = rowUser.querySelector(".button-delete-user");
+        buttonDeleteUser.addEventListener("click", onButtonUserDelete);
+        buttonDeleteUser.buttonUserDeleteData = user.id;
 
         tbodyUsers.appendChild(rowUser);
     }
 
     function showUsers(users)
     {
-        // console.log("Showing users", users);
         const tbodyUsers = document.getElementById("tbody-users");
         tbodyUsers.replaceChildren();
         
@@ -32,16 +35,21 @@
         fetch("/user.php")
         .then(response => response.json())
         .then(users => showUsers(users));
-        // const users = [
-        //     {
-        //         name: "Mark Peschel",
-        //         id: "972607187",
-        //         kind: "STUDENT",
-        //         allowed: true,
-        //     }
-        // ];
-        // showUsers(users);
         
+    }
+
+    function onButtonUserDelete(event)
+    {
+        const id = event.target.buttonUserDeleteData;
+        fetch(
+            "/user.php?" + new URLSearchParams({id:id}),
+            {method: "DELETE"}
+        )
+        .then(result => result.json())
+        .then(result => {
+            console.log(result);
+            document.getElementById("button-user-search").click();
+        });
     }
 
     function init()
@@ -49,7 +57,7 @@
         document.getElementById("button-user-search")
             .addEventListener("click", onButtonUserSearch);
         document.getElementById("button-user-search").click();
-        }
+    }
 
     window.addEventListener("load", init);
 })();
