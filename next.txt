@@ -34,6 +34,7 @@ Maybe:
 live updates (swipe on card-read.html, update gets sent to access.html etc)
 in user.html, give columns a default minimum width or something to reduce jumping around when you add/delete users
 add error modal dialogues for when things don't work
+user.html: user exists error should include name of old duplicated user
 pagination
 make access.php named just access
     or access.json

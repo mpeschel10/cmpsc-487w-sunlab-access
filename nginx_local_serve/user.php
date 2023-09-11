@@ -36,12 +36,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET')
     
     $id = $_POST['id'];
     $kind = $_POST['kind'];
-    $allowed = $_POST['allowed'];
+    $name = $_POST['name'];
+    $allowed = $_POST['allowed'] ? "1" : "0";
     
     $conn = Sweng\connect();
     $sql = $_POST['exist-ok'] ?
-        "INSERT IGNORE INTO user (kind, allowed, id) VALUES (\"$kind\", $allowed, \"$id\")" :
-        "INSERT INTO user (kind, allowed, id) VALUES (\"$kind\", $allowed, \"$id\")";
+        "INSERT IGNORE INTO user (kind, allowed, id, name) VALUES (\"$kind\", $allowed, \"$id\", \"$name\")" :
+        "INSERT INTO user (kind, allowed, id, name) VALUES (\"$kind\", $allowed, \"$id\", \"$name\")";
     
     try {
         $conn->query($sql);
@@ -52,9 +53,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET')
             die(json_encode("User id \"$id\" already exists."));
         } else {
             http_response_code(500);
-            throw new Exception(json_encode(array(
-                'event'=>'unknown exception', 'getCode'=>$e->getCode(), 'getSqlState'=>$e->getSqlState(), 'getMessage'=>$e->getMessage()
-                )),
+            throw new Exception('event: unknown exception o_o getCode: '. $e->getCode() .
+                ' o_o getSqlState: ' . $e->getSqlState() . ' o_o getMessage: ' . $e->getMessage() .
+                ' o_o sql: ' . $sql
+                ,
                 $e->getCode(),
                 $e
             );
@@ -72,9 +74,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET')
     
     $conn = Sweng\connect();
     $result = $conn->query($sql);
-    echo json_encode($result);
 
-    http_response_code(200);
+    http_response_code(204);
 } else {
     http_response_code(405);
 }

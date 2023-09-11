@@ -1,3 +1,6 @@
+import trimIdImport from "./trim-id.js";
+const { trimId } = trimIdImport;
+
 (() => {
     function showUser(user)
     {
@@ -45,11 +48,36 @@
             "/user.php?" + new URLSearchParams({id:id}),
             {method: "DELETE"}
         )
-        .then(result => result.json())
+        .then(result => result.text())
         .then(result => {
             console.log(result);
             document.getElementById("button-user-search").click();
         });
+    }
+
+    function onButtonUserCreate(event)
+    {
+        event.preventDefault();
+        
+        const inputUserId = document.getElementById("input-user-id");
+        inputUserId.value = trimId(inputUserId.value);
+
+        const formData = new FormData(document.getElementById("form-user-create"));
+        fetch("/user.php",
+            {
+                method: "POST",
+                body: formData,
+            }
+        )
+        .then(result => {
+            if (result.ok)
+            {
+                document.getElementById("form-user-create").reset();
+                document.getElementById("button-user-search").click();
+            } else {
+                console.log("Error! User already exists");
+            }
+        })
     }
 
     function init()
@@ -57,6 +85,8 @@
         document.getElementById("button-user-search")
             .addEventListener("click", onButtonUserSearch);
         document.getElementById("button-user-search").click();
+        document.getElementById("button-user-create")
+            .addEventListener("click", onButtonUserCreate);
     }
 
     window.addEventListener("load", init);

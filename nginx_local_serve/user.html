@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Sunlab users</title>
-<script src="/user.js" async></script>
+<script src="/user.js" type="module"></script>
 <style>
 td, th {
     border: 1px solid black;
@@ -30,6 +30,22 @@ table {
         <tbody id="tbody-users">
         </tbody>
     </table>
+
+    <form id="form-user-create">
+        <fieldset>
+            <legend>Create a user</legend>
+            <div><label for="input-user-id"     >Id:      <input type="text"     name="id"      id="input-user-id"     value="444"></label></div>
+            <div><label for="input-user-name"   >Name:    <input type="text"     name="name"    id="input-user-name"   value="Unlucky Ned"></label></div>
+            <div><label for="select-user-kind">User kind:
+                <select name="kind" id="select-user-kind">
+                    <option value="ADMIN">Administrator</option>
+                    <option selected value="STUDENT">Student</option>
+                </select>
+            </label></div>
+            <div><label for="input-user-allowed">Allowed: <input type="checkbox" name="allowed" id="input-user-allowed" checked></label></div>
+            <input type="submit" value="Create user" id="button-user-create">
+        </fieldset>
+    </form>
 </body>
 <template id="template-user-row">
     <tr>
