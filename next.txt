@@ -8,6 +8,9 @@ admin page (user.html)
     text fields to edit users within user table
     button to post changes to user (exist_ok)
     sort user table locally
+    field to search for specific id
+admin page access.html
+    see access table
     fields for search by time range
     fields for search by "present at instant"
     search by user by id
@@ -29,6 +32,7 @@ https
 basic auth swipe.php
 
 Maybe:
+live updates (swipe on card-read.html, update gets sent to access.html etc)
 pagination
 make access.php named just access
     or access.json

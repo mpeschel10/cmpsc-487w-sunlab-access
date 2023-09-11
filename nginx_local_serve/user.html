@@ -4,10 +4,28 @@
 <meta charset="utf-8">
 <title>Sunlab users</title>
 <script src="/user.js" async></script>
+<style>
+td, th {
+    border: 1px solid black;
+    margin: 0px;
+}
+
+table {
+    border-collapse: collapse;
+}
+</style>
 </head>
 <body>
     <form>
         <input type="submit" id="button-user-search" value="Search">
     </form>
+    <table>
+        <thead><tr><th>Id</th><th>Name</th><th>Kind</th><th>Allowed</th></tr></thead>
+        <tbody id="tbody-users">
+        </tbody>
+    </table>
 </body>
+<template id="template-user-row">
+    <tr><td class="data-id">id data</td><td class="data-name">name data</td><td class="data-kind">kind data</td><td class="data-allowed">allowed data</td></tr>
+</template>
 </html>
