@@ -15,9 +15,19 @@ th, td {
 </style>
 </head>
 <body>
-<form>
+<form id="form-search">
     <fieldset>
         <legend>Search for accesses</legend>
+        <label for="input-instant-active"><input type="checkbox" name="instant-active" id="input-instant-active"> Filter by date. </label>
+        <input type="date" name="instant">
+        <br>
+        <label for="input-datetime-active">      <input type="checkbox"       name="datetime-active" id="input-datetime-active"> Filter by date range. </label>
+        <label for="input-datetime-start"> Start:<input type="datetime-local" name="datetime-start"  id="input-datetime-start"></label> -
+        <label for="input-datetime-end">   End:  <input type="datetime-local" name="datetime-end"    id="input-datetime-end">  </label>
+        <br>
+        <label for="input-user-id-active"><input type="checkbox" name="user-id-active" id="input-user-id-active"> Filter by user id. </label>
+        <input type="text" name="user-id">
+        <br>
         <button type="submit" id="button-access-search">Search</button>
     </fieldset>
 </form>

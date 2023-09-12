@@ -5,17 +5,63 @@ include 'Sweng.php';
 if ($_SERVER['REQUEST_METHOD'] === 'GET')
 {
     $utc = new DateTimeZone('UTC');
-    $conn = Sweng\connect();
+    $_GET['user_id_active'] = array_key_exists('user-id-active', $_GET) && $_GET['user-id-active'] === 'on';
+    $_GET['datetime_active'] = array_key_exists('datetime-active', $_GET) && $_GET['datetime-active'] === 'on';
+    $_GET['datetime_start'] = date('Y-m-d H:i:s', $_GET['datetime-start']);
+    $_GET['datetime_end'] = date('Y-m-d H:i:s', $_GET['datetime-end']);
+    
+    $sql = 'SELECT timestamp, name, user_id, access.kind, access.allowed FROM access LEFT JOIN user ON access.user_id = user.id';
+    $paramTypes = '';
+    $params = array();
+    $predicates = array();
 
-    $result = $conn->query('SELECT timestamp, name, user_id, access.kind, access.allowed FROM access LEFT JOIN user ON access.user_id = user.id');
+    if ($_GET['user_id_active'])
+    {
+        $paramTypes .= 's';
+        $params[] = $_GET['user-id'];
+        $predicates[] = 'access.user_id = ?';
+    }
+
+    if ($_GET['datetime_active'])
+    {
+        if ($_GET['datetime_start'] !== '')
+        {
+            $paramTypes .= 's';
+            $params[] = $_GET['datetime_start'];
+            $predicates[] = 'timestamp >= ?';
+        }
+        if ($_GET['datetime_end'] !== '')
+        {
+            $paramTypes .= 's';
+            $params[] = $_GET['datetime_end'];
+            $predicates[] = 'timestamp <= ?';
+        }
+    }
+
+    if (count($params) > 0)
+    {
+        $predicatesString = join(' AND ', $predicates);
+        $sql = $sql . ' WHERE ' . $predicatesString;
+    }
+
+    $conn = Sweng\connect();
+    $stmt = $conn->prepare($sql);
+    if (count($params) > 0)
+        $stmt->bind_param($paramTypes, ...$params);
+    
+    $stmt->execute();
+    $result = $stmt->get_result();
+    // $result = $conn->query();
     $conn->close();
+    // echo json_encode($result);
     
     $response = array();
+    $response[] = array('userId'=>json_encode($_GET));
     if ($result->num_rows > 0)
     {
         while ($row = $result->fetch_assoc())
         {
-            $row['allowed'] = $row['allowed'] === '1';
+            $row['allowed'] = $row['allowed'] === 1;
             $row['userId'] = $row['user_id'];
             unset($row['user_id']);
             $row['name'] = $row['name'] ?? null;

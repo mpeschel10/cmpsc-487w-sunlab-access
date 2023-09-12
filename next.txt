@@ -2,10 +2,7 @@ Done:
 
 Next:
 admin page access.html
-    fields for search by time range
-    fields for search by "present at instant"
-    search by user by id
-    search by user by name
+    fields for search by date
 sql job to delete old records
 
 Later:
@@ -41,7 +38,19 @@ self-signed certificate nginx
 admin page (user.html)
     sort user table locally
     field to search for specific id
-access.html fancy timeline of lab access
+access.html
+    fancy timeline of lab access
+        add graph lines for how long people are in the lab?
+    in table, add "fast search" button for selecting
+    in table, highlight alternating days
+    in search, +- day, week clickers
+    in search, editing any field should tick corresponding checkbox
+    in search, user-id should be processed the same as everywhere else
+    in search, entering a date without a time should still submit it (midnight on that day)
+    in search, add "present at instant" or "present during span"
+replace all hyphenated and camelcase json and sql variables with snake-case.
+search by user by name
+
 
 Server notes:
 * pacman -S nginx
