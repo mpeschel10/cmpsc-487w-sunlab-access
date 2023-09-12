@@ -4,9 +4,10 @@ include 'Sweng.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET')
 {
+    $utc = new DateTimeZone('UTC');
     $conn = Sweng\connect();
 
-    $result = $conn->query('SELECT * FROM access');
+    $result = $conn->query('SELECT timestamp, name, user_id, access.kind, access.allowed FROM access LEFT JOIN user ON access.user_id = user.id');
     $conn->close();
     
     $response = array();
@@ -14,10 +15,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET')
     {
         while ($row = $result->fetch_assoc())
         {
-            $row['id'] = intval($row['id']);
-            $row['allowed'] = $row === '1';
+            $row['allowed'] = $row['allowed'] === '1';
             $row['userId'] = $row['user_id'];
             unset($row['user_id']);
+            $row['name'] = $row['name'] ?? null;
+
+            $timestamp = new DateTimeImmutable($row['timestamp'], $utc);
+            $row['timestamp'] = $timestamp->getTimestamp();
             $response[] = $row;
         }
     }
