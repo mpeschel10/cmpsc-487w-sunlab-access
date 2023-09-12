@@ -37,6 +37,7 @@
     {
         document.getElementById("button-access-search")
             .addEventListener("click", onButtonAccessSearch);
+            document.getElementById("button-access-search").click();
     }
 
     window.addEventListener("load", init);
