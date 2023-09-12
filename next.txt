@@ -1,7 +1,7 @@
 Done:
 
 Next:
-sql job to delete old records
+systemd timer job to delete old records
 
 Later:
 tests
