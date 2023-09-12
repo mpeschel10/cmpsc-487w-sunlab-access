@@ -2,20 +2,26 @@ import trimIdImport from "./trim-id.js";
 const { trimId } = trimIdImport;
 
 (() => {
+    function refresh() { document.getElementById("button-user-search").click(); }
     function showUser(user)
     {
         const tbodyUsers = document.getElementById("tbody-users");
         const templateUserRow = document.getElementById("template-user-row");
         const rowUser = document.importNode(templateUserRow.content.querySelector("tr"), true);
+        console.log(rowUser);
 
-        rowUser.querySelector(".data-id")     .innerText = user.id;
-        rowUser.querySelector(".data-name")   .innerText = user.name;
-        rowUser.querySelector(".data-kind")   .innerText = user.kind;
-        rowUser.querySelector(".data-allowed").innerText = user.allowed;
+        rowUser.querySelector(".data-id")     .value   = user.id;
+        rowUser.querySelector(".data-name")   .value   = user.name;
+        rowUser.querySelector(".data-kind")   .value   = user.kind;
+        rowUser.querySelector(".data-allowed").checked = user.allowed;
         
-        const buttonDeleteUser = rowUser.querySelector(".button-delete-user");
-        buttonDeleteUser.addEventListener("click", onButtonUserDelete);
-        buttonDeleteUser.buttonUserDeleteData = user.id;
+        const buttonUserUpdate = rowUser.querySelector(".button-user-update");
+        buttonUserUpdate.addEventListener("click", onButtonUserUpdate);
+        buttonUserUpdate.buttonUserUpdateData = rowUser;
+        
+        const buttonUserDelete = rowUser.querySelector(".button-user-delete");
+        buttonUserDelete.addEventListener("click", onButtonUserDelete);
+        buttonUserDelete.buttonUserDeleteData = user.id;
 
         tbodyUsers.appendChild(rowUser);
     }
@@ -41,6 +47,29 @@ const { trimId } = trimIdImport;
         
     }
 
+    function onButtonUserUpdate(event)
+    {
+        const row = event.target.buttonUserUpdateData;
+        
+        const formData = new FormData();
+        formData.append("id",   row.querySelector(".data-id")     .value);
+        formData.append("name", row.querySelector(".data-name")   .value);
+        formData.append("kind", row.querySelector(".data-kind")   .value);
+        formData.append("exist-ok", "on");
+        if (row.querySelector(".data-allowed").checked)
+            formData.append("allowed", "on");
+        
+            fetch("/user.php", {
+            method: "POST",
+            body: formData,
+        })
+        .then(result => {
+            console.log("Printing results of onButtonUserUpdate");
+            result.text().then(text => console.log(text));
+            refresh();
+        });
+    }
+
     function onButtonUserDelete(event)
     {
         const id = event.target.buttonUserDeleteData;
@@ -51,7 +80,7 @@ const { trimId } = trimIdImport;
         .then(result => result.text())
         .then(result => {
             console.log(result);
-            document.getElementById("button-user-search").click();
+            refresh();
         });
     }
 
@@ -73,7 +102,7 @@ const { trimId } = trimIdImport;
             if (result.ok)
             {
                 document.getElementById("form-user-create").reset();
-                document.getElementById("button-user-search").click();
+                refresh();
             } else {
                 console.log("Error! User already exists");
             }
@@ -84,9 +113,9 @@ const { trimId } = trimIdImport;
     {
         document.getElementById("button-user-search")
             .addEventListener("click", onButtonUserSearch);
-        document.getElementById("button-user-search").click();
         document.getElementById("button-user-create")
             .addEventListener("click", onButtonUserCreate);
+        refresh();
     }
 
     window.addEventListener("load", init);

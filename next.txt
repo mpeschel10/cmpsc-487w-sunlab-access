@@ -1,12 +1,6 @@
 Done:
 
 Next:
-admin page (user.html)
-    add user form
-    text fields to edit users within user table
-    button to post changes to user (exist_ok)
-    sort user table locally
-    field to search for specific id
 admin page access.html
     see access table
     fields for search by time range
@@ -32,9 +26,12 @@ make user.html presentation pretty: Titlecase user.kind, boolean(user.allowed)
 
 Maybe:
 live updates (swipe on card-read.html, update gets sent to access.html etc)
-in user.html, give columns a default minimum width or something to reduce jumping around when you add/delete users
 add error modal dialogues for when things don't work
-user.html: user exists error should include name of old duplicated user
+user.html:
+    user exists error should include name of old duplicated user
+    in user.html, give columns a default minimum width or something to reduce jumping around when you add/delete users
+    hide borders of text inputs
+    changing user id is broken. Should be custom Update() statement, I suppose.
 pagination
 make access.php named just access
     or access.json
@@ -42,6 +39,9 @@ systemd timer to delete old records
 sanity checking for "local time" of swipe records if reported time is like, actually close to server time or if we're getting 3-month old spoofed records or what
 remove passwords from php lol
 self-signed certificate nginx
+admin page (user.html)
+    sort user table locally
+    field to search for specific id
 
 Server notes:
 * pacman -S nginx

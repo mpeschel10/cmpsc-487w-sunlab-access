@@ -38,11 +38,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET')
     $kind = $_POST['kind'];
     $name = $_POST['name'];
     $allowed = $_POST['allowed'] ? "1" : "0";
+
+    $operation = $_POST['exist-ok'] ? 'REPLACE' : 'INSERT';
     
     $conn = Sweng\connect();
-    $sql = $_POST['exist-ok'] ?
-        "INSERT IGNORE INTO user (kind, allowed, id, name) VALUES (\"$kind\", $allowed, \"$id\", \"$name\")" :
-        "INSERT INTO user (kind, allowed, id, name) VALUES (\"$kind\", $allowed, \"$id\", \"$name\")";
+    $sql = "$operation INTO user (kind, allowed, id, name) VALUES (\"$kind\", $allowed, \"$id\", \"$name\")";
     
     try {
         $conn->query($sql);

@@ -15,7 +15,7 @@ table {
     border-collapse: collapse;
 }
 
-.button-delete-user {
+.button-user-delete {
     display: block;
     width: 100%;
 }
@@ -26,7 +26,7 @@ table {
         <input type="submit" id="button-user-search" value="Search">
     </form>
     <table>
-        <thead><tr><th>Id</th><th>Name</th><th>Kind</th><th>Allowed</th><th>Delete</th></tr></thead>
+        <thead><tr><th>Id</th><th>Name</th><th>Kind</th><th>Allowed</th><th>Apply</th><th>Delete</th></tr></thead>
         <tbody id="tbody-users">
         </tbody>
     </table>
@@ -49,11 +49,15 @@ table {
 </body>
 <template id="template-user-row">
     <tr>
-        <td class="data-id">id data</td>
-        <td class="data-name">name data</td>
-        <td class="data-kind">kind data</td>
-        <td class="data-allowed">allowed data</td>
-        <td><button class="button-delete-user">X</button></td>
+        <td><input type="text" class="data-id"></td>
+        <td><input type="text" class="data-name"></td>
+        <td><select class="data-kind">
+            <option value="ADMIN">Administrator</option>
+            <option value="STUDENT">Student</option>
+        </select></td>
+        <td><input type="checkbox" class="data-allowed"></td>
+        <td><button class="button-user-update">Apply</button></td>
+        <td><button class="button-user-delete">X</button></td>
     </tr>
 </template>
 </html>
