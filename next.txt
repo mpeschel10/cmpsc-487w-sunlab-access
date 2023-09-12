@@ -2,7 +2,7 @@ Done:
 
 Next:
 admin page access.html
-    see access table
+    support name field in access table
     fields for search by time range
     fields for search by "present at instant"
     search by user by id

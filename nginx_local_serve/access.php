@@ -16,6 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET')
         {
             $row['id'] = intval($row['id']);
             $row['allowed'] = $row === '1';
+            $row['userId'] = $row['user_id'];
+            unset($row['user_id']);
             $response[] = $row;
         }
     }

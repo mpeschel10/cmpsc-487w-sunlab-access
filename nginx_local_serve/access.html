@@ -18,21 +18,21 @@ th, td {
 <form>
     <fieldset>
         <legend>Search for accesses</legend>
-        <button type="submit">Search</button>
+        <button type="submit" id="button-access-search">Search</button>
     </fieldset>
 </form>
 <table>
     <thead>
         <tr><th>Time</th><th>Name</th><th>Id</th><th>Kind</th><th>Allowed</th></tr>
     </thead>
-    <tbody id="tbody-data">
+    <tbody id="tbody-access">
     </tbody>
 </table>
 <template id="template-row-access">
     <tr>
-        <td class="data-time"></td>
+        <td class="data-timestamp"></td>
         <td class="data-name"></td>
-        <td class="data-id"></td>
+        <td class="data-user-id"></td>
         <td class="data-kind"></td>
         <td class="data-allowed"></td>
     </tr>
