@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Sunlab Access Log</title>
+<script async src="/access.js"></script>
+<style>
+table {
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid black;
+    padding: 3px;
+}
+</style>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>Search for accesses</legend>
+        <button type="submit">Search</button>
+    </fieldset>
+</form>
+<table>
+    <thead>
+        <tr><th>Time</th><th>Name</th><th>Id</th><th>Kind</th><th>Allowed</th></tr>
+    </thead>
+    <tbody id="tbody-data">
+    </tbody>
+</table>
+<template id="template-row-access">
+    <tr>
+        <td class="data-time"></td>
+        <td class="data-name"></td>
+        <td class="data-id"></td>
+        <td class="data-kind"></td>
+        <td class="data-allowed"></td>
+    </tr>
+</template>
+
+</body>
+</html>

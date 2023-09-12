@@ -7,10 +7,10 @@ admin page access.html
     fields for search by "present at instant"
     search by user by id
     search by user by name
+sql job to delete old records
 
 Later:
 tests
-sql job to delete old records
 sql prepared statements
 authentication someh
 separate login page
@@ -42,6 +42,7 @@ self-signed certificate nginx
 admin page (user.html)
     sort user table locally
     field to search for specific id
+access.html fancy timeline of lab access
 
 Server notes:
 * pacman -S nginx
