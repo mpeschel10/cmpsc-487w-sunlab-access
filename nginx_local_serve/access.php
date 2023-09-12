@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET')
     $utc = new DateTimeZone('UTC');
     $_GET['user_id_active'] = array_key_exists('user-id-active', $_GET) && $_GET['user-id-active'] === 'on';
     $_GET['datetime_active'] = array_key_exists('datetime-active', $_GET) && $_GET['datetime-active'] === 'on';
+    $_GET['instant_active'] = array_key_exists('instant-active', $_GET) && $_GET['instant-active'] === 'on';
     $_GET['datetime_start'] = date('Y-m-d H:i:s', $_GET['datetime-start']);
     $_GET['datetime_end'] = date('Y-m-d H:i:s', $_GET['datetime-end']);
     
@@ -36,6 +37,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET')
             $params[] = $_GET['datetime_end'];
             $predicates[] = 'timestamp <= ?';
         }
+    }
+
+    if ($_GET['instant_active'])
+    {
+        $paramTypes .= 'ss';
+        $dayStart = intval($_GET['instant']);
+        $dayEnd = $dayStart + 86400;
+
+        $dayStart = date('Y-m-d H:i:s', $dayStart);
+        $dayEnd = date('Y-m-d H:i:s', $dayEnd);
+        array_push($params, $dayStart, $dayEnd);
+        
+        $predicates[] = 'timestamp >= ? AND timestamp <= ?';
     }
 
     if (count($params) > 0)

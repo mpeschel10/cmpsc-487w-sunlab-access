@@ -40,7 +40,13 @@
             const epoch = Math.round(new Date(formData.get('datetime-end')).getTime() / 1000);
             formData.set("datetime-end", epoch);
         }
-        console.log(formData.get('datetime-end'));
+        
+        if (formData.get("instant") !== "")
+        {
+            const epoch = Math.round(new Date(formData.get('instant')).getTime() / 1000);
+            formData.set("instant", epoch);
+        }
+
         fetch("/access.php?" + new URLSearchParams(formData))
             .then(response => response.json())
             .then(accesses => showAccesses(accesses));

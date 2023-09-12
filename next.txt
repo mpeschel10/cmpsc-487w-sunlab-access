@@ -1,8 +1,6 @@
 Done:
 
 Next:
-admin page access.html
-    fields for search by date
 sql job to delete old records
 
 Later:
