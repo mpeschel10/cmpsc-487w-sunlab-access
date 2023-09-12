@@ -1,7 +1,6 @@
-Done:
-
 Next:
-basic auth for everything but access.php
+Clean up test files etc.
+Add links between the admin pages
 
 Later:
 tests
@@ -19,6 +18,7 @@ basic auth swipe.php
 make user.html presentation pretty: Titlecase user.kind, boolean(user.allowed)
 
 Maybe:
+separate authorization for access.php GET and POST, possibly by different endpoints.
 live updates (swipe on card-read.html, update gets sent to access.html etc)
 add error modal dialogues for when things don't work
 user.html:
