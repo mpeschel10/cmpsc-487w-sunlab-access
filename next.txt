@@ -1,7 +1,7 @@
 Done:
 
 Next:
-systemd timer job to delete old records
+basic auth for everything but access.php
 
 Later:
 tests

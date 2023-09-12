@@ -1,0 +1,13 @@
+[Unit]
+Description=Once per month, clean the database for a Fall 2023 class.
+
+[Timer]
+# Run once per month, on the 12th.
+OnCalendar=*-*-12
+
+[Install]
+# If enabled, run when we get to a desktop environment.
+# If this is installed on a headless server,
+#  the install target may need to be different idk.
+WantedBy=multi-user.target
+

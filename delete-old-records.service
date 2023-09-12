@@ -1,0 +1,6 @@
+[Unit]
+Description=Delete 5+ year old records in a database for a class Fall 2023
+[Service]
+ExecStart=sh /opt/sweng/delete_old_records.sh
+
+
