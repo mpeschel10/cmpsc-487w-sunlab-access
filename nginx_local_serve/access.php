@@ -8,8 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET')
     $_GET['user_id_active'] = array_key_exists('user-id-active', $_GET) && $_GET['user-id-active'] === 'on';
     $_GET['datetime_active'] = array_key_exists('datetime-active', $_GET) && $_GET['datetime-active'] === 'on';
     $_GET['instant_active'] = array_key_exists('instant-active', $_GET) && $_GET['instant-active'] === 'on';
-    $_GET['datetime_start'] = date('Y-m-d H:i:s', $_GET['datetime-start']);
-    $_GET['datetime_end'] = date('Y-m-d H:i:s', $_GET['datetime-end']);
     
     $sql = 'SELECT timestamp, name, user_id, access.kind, access.allowed FROM access LEFT JOIN user ON access.user_id = user.id';
     $paramTypes = '';
@@ -25,16 +23,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET')
 
     if ($_GET['datetime_active'])
     {
-        if ($_GET['datetime_start'] !== '')
+        if ($_GET['datetime-start'] !== '')
         {
             $paramTypes .= 's';
-            $params[] = $_GET['datetime_start'];
+            $params[] = date('Y-m-d H:i:s', $_GET['datetime-start']);
             $predicates[] = 'timestamp >= ?';
         }
-        if ($_GET['datetime_end'] !== '')
+        if ($_GET['datetime-end'] !== '')
         {
             $paramTypes .= 's';
-            $params[] = $_GET['datetime_end'];
+            $params[] = date('Y-m-d H:i:s', $_GET['datetime-end']);
             $predicates[] = 'timestamp <= ?';
         }
     }
