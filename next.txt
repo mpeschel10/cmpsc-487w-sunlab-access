@@ -1,7 +1,4 @@
 Next:
-Add links between the admin pages
-electron bb
-
 
 Later:
 tests
