@@ -1,8 +1,7 @@
 USE sweng;
 
-DROP TABLE access;
-DROP TABLE user;
-
+DROP TABLE IF EXISTS access;
+DROP TABLE IF EXISTS user;
 
 CREATE TABLE user (
     id VARCHAR(256),
@@ -44,6 +43,6 @@ VALUES
     (       7,    'edsger',  'ENTRY', '2023-09-05T19:00:00',        1)
 ;
 
-select * from user;
-select * from access;
+SELECT * FROM user;
+SELECT * FROM access;
 COMMIT;
