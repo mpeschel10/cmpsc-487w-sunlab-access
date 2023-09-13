@@ -9,7 +9,7 @@ September 13, 2023
 
 Database system: MySQL\
 Programming language: HTML/CSS/JS frontend, PHP on Nginx backend\
-Github link: https://github.com/mpeschel10/cmpsc-487w-sunlab-access (You are here)\
+Github link: https://github.com/mpeschel10/cmpsc-487w-sunlab-access (You are here)
 
 YouTube demo: https://www.youtube.com/watch?v=_3pFOXVmFHg
 
