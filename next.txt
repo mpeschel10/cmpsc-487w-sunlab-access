@@ -1,16 +1,11 @@
 Next:
 Add links between the admin pages
-Get public server running
-    install delete-old-record.* in /etc/systemd/system/
-        test and confirm delete-old-record job works (journalctl -u);
-        confirm multi-user.target exists
-        enable
+electron bb
 
 
 Later:
 tests
 sql prepared statements
-authentication someh
 separate login page
 php support for basic auth instead of nginx
 what other kinds of auth are there? digest? token? implement something nicer
