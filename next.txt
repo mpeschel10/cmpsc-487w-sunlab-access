@@ -1,4 +1,15 @@
 Next:
+script
+    acknowledge that authorization is set up completely manually and users do not actually have passwords implemented in SQL
+film video
+submission:
+Database: mySQL
+Languages: HTML/JS/CSS frontend with Nginx/PHP backend.
+Link to github: https://github.com/mpeschel10/cmpsc-487w-sunlab-access
+Link to YouTube demo video:
+Link to my website: https://sweng.mpeschel10.com
+Use username and password "AzureDiamond" and "hunter2" to access entire site,
+ or "CardReader" and "password" to only access the cardreader and access.php endpoints.
 
 Later:
 tests
@@ -9,9 +20,6 @@ what other kinds of auth are there? digest? token? implement something nicer
 what kinds of password hashing do php and nginx support?
     good procedure? what is state of art
         how does twitter google facebook do it?
-move to public server on digitalocean
-https
-basic auth swipe.php
 make user.html presentation pretty: Titlecase user.kind, boolean(user.allowed)
 
 Maybe:

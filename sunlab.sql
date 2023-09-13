@@ -14,10 +14,10 @@ CREATE TABLE user (
 INSERT INTO user
     (     kind, allowed,                      id,              name)
 VALUES
-    ('STUDENT',       1,                'edsger', 'Edsger Dijkstra'),
+    ('STUDENT',       1,                    'jj',  'Japheth Beiler'),
     ('STUDENT',       1,             '972607187',    'Mark Peschel'),
-    ('STUDENT',       0, ';9308057671208700000?',     'Alan Turing'),
-    (  'ADMIN',       1,                 'admin',   'Adam Inchoate')
+    ('STUDENT',       0, ';9308057671208700000?',   'Tyler Lindsay'),
+    (  'ADMIN',       1,          'AzureDiamond',    'Gabriel Marx')
 ;
 
 CREATE TABLE access (
