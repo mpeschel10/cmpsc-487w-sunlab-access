@@ -1,16 +1,6 @@
 Next:
 Add links between the admin pages
 Get public server running
-    Try out the LEMP stack; might be nice
-    ssh in
-    clone the repo
-    confirm nginx, sql, php-fpm running
-    visit public ip
-    run sunlab.sql
-    add /etc/nginx/.htpasswd files (if test -d)
-    include my nginx thing
-        disable basic_auth
-        nginx -t && nginx -s reload
     install delete-old-record.* in /etc/systemd/system/
         test and confirm delete-old-record job works (journalctl -u);
         confirm multi-user.target exists
