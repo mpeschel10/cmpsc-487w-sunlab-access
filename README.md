@@ -18,6 +18,6 @@ Embedded card reader: https://sweng.mpeschel10.com/card-reader.html
 * password: password
 
 Access history: https://sweng.mpeschel10.com
-Users: https://sweng.mpeschel10.com/
+Users: https://sweng.mpeschel10.com/user.html
 * username: AzureDiamond
 * password: hunter2
